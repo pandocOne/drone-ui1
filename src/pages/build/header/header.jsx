@@ -50,13 +50,13 @@ const Header = (props) => {
           className={cx('controls')}
           menuItems={[{
             value: 'restart',
-            content: 'Restart',
+            content: '重启',
           }, {
             value: 'promote',
             content: 'Promote',
           }, {
             value: 'debug',
-            content: 'Debug',
+            content: '调试',
           }]}
           menuAlignment="right"
           onMenuItemSelect={handleMenuItemSelect}

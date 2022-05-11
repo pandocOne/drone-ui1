@@ -60,7 +60,7 @@ const DeploymentForm = ({ handleSubmit, handleCancel }) => {
   return (
     <Form className={cx('deployment-form')}>
       <FormSection
-        title="Type"
+        title="种类"
         className={cx('deployment-form-row')}
       >
         <div className={cx('deployment-form-radio-group')}>
@@ -118,7 +118,7 @@ const DeploymentForm = ({ handleSubmit, handleCancel }) => {
             value={parameterState.value}
             onChange={handleParameterChange('value')}
           />
-          <Button onClick={handleAddParameter}>+ Add</Button>
+          <Button onClick={handleAddParameter}>+ 增加</Button>
         </div>
       </FormSection>
       <FormSection className={cx('deployment-form-controls')}>
