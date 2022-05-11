@@ -28,8 +28,8 @@ export default function StageNav(props) {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('header')}>
-        <h3 className={cx('title')}>Pipeline stages</h3>
-        <span className={cx('counter')}>{isDataLoading ? null : `${stages.length} ${stages.length === 1 ? 'stage' : 'stages'}`}</span>
+        <h3 className={cx('title')}>工作流阶段</h3>
+        <span className={cx('counter')}>{isDataLoading ? null : `${stages.length} ${stages.length === 1 ? '个阶段' : '个阶段'}`}</span>
       </div>
       <nav
         className={classNames(cx('inner'), className)}
@@ -131,7 +131,7 @@ const StageDefault = (props) => {
       {isExpanded && (
       <ul className={cx('stage-steps')}>
         <li className={cx('steps-header')}>
-          Steps
+          步骤
           <i className={cx('divider')} />
         </li>
         {steps.sort((a, b) => a.number - b.number).map(({
