@@ -17,7 +17,7 @@ const cx = classNames.bind(styles);
 
 const buildTimeoutsOptions = (timeouts) => timeouts.map((timeout) => ({
   value: timeout,
-  key: timeout > 90 ? `${timeout / 60} hours` : `${timeout} minutes`,
+  key: timeout > 90 ? `${timeout / 60} 小时` : `${timeout} 分钟`,
 }));
 
 export default function General({ user, repo }) {
@@ -51,14 +51,14 @@ export default function General({ user, repo }) {
 
   const handleDisableRepo = async () => {
     // eslint-disable-next-line
-    const userAgreed = confirm('Are you sure you want to disable this repo?');
+    const userAgreed = confirm('确定要disable本库?');
     if (userAgreed) {
       try {
         await axiosWrapper(`/api/repos/${namespace}/${name}`, { method: 'DELETE' });
         mutate();
-        showSuccess('Repo has been disabled');
+        showSuccess('库已被disabled');
       } catch (e) {
-        showError(`Unable to disable repo: ${e.message}`);
+        showError(`无法disable库: ${e.message}`);
         // eslint-disable-next-line no-console
         console.warn(e.message);
       }
@@ -69,9 +69,9 @@ export default function General({ user, repo }) {
     try {
       const res = await axiosWrapper(`/api/repos/${namespace}/${name}`, { method: 'PATCH', data: { ...settings, timeout: +settings.timeout } });
       mutate(res);
-      showSuccess('Changes have been saved');
+      showSuccess('已保存修改');
     } catch (e) {
-      showError(`Unable to save changes: ${e.message}`);
+      showError(`无法保存修改: ${e.message}`);
       // eslint-disable-next-line no-console
       console.warn(e.message);
     }
@@ -113,14 +113,14 @@ export default function General({ user, repo }) {
     <div className={cx('wrapper')}>
       <div className={cx('inner')}>
         <Form className={cx('form')}>
-          <FormSection className={cx('form-section-row')} title="Project Webhooks">
+          <FormSection className={cx('form-section-row')} title="项目 Webhooks">
             <div className={cx('switch-row')}>
               <Switch
                 id="ignore_pull_requests"
                 checked={settings.ignore_pull_requests}
                 onChange={handleSettingsChange('ignore_pull_requests')}
               >
-                Disable Pull Requests
+                禁止Pull Requests
               </Switch>
             </div>
             <div className={cx('switch-row')}>
@@ -129,11 +129,11 @@ export default function General({ user, repo }) {
                 checked={settings.ignore_forks}
                 onChange={handleSettingsChange('ignore_forks')}
               >
-                Disable forks
+                禁止forks
               </Switch>
             </div>
           </FormSection>
-          <FormSection className={cx('form-section-row')} title="Project Settings">
+          <FormSection className={cx('form-section-row')} title="项目设置">
             <div className={cx('switch-row')}>
               <Switch
                 id="protected"
@@ -143,7 +143,7 @@ export default function General({ user, repo }) {
                 Protected
               </Switch>
               <p className={cx('note')}>
-                Blocks a pipeline if the yaml signature cannot be verified.
+                如果无法验证 yaml 签名，则阻止管道(pipeline)。
               </p>
             </div>
             {user?.admin && (
@@ -157,7 +157,7 @@ export default function General({ user, repo }) {
                     Trusted
                   </Switch>
                   <p className={cx('note')}>
-                    Enables privileged container settings.
+                    启用特权容器设置。
                   </p>
                 </div>
                 <div className={cx('switch-row')}>
@@ -166,10 +166,10 @@ export default function General({ user, repo }) {
                     checked={settings.auto_cancel_pull_requests}
                     onChange={handleSettingsChange('auto_cancel_pull_requests')}
                   >
-                    Auto cancel pull requests
+                    自动取消PR
                   </Switch>
                   <p className={cx('note')}>
-                    Automatically cancel pending pull request builds.
+                    自动取消挂起的Pull Request Builds.
                   </p>
                 </div>
                 <div className={cx('switch-row')}>
@@ -178,10 +178,10 @@ export default function General({ user, repo }) {
                     checked={settings.auto_cancel_pushes}
                     onChange={handleSettingsChange('auto_cancel_pushes')}
                   >
-                    Auto cancel pushes
+                    自动取消push
                   </Switch>
                   <p className={cx('note')}>
-                    Automatically cancel pending push builds.
+                    自动取消挂起的push builds.
                   </p>
                 </div>
                 <div className={cx('switch-row')}>
@@ -191,21 +191,21 @@ export default function General({ user, repo }) {
                     disabled={!settings.auto_cancel_pull_requests && !settings.auto_cancel_pushes}
                     onChange={handleSettingsChange('auto_cancel_running')}
                   >
-                    Auto cancel running
+                    自动取消正运行
                   </Switch>
                   <p className={cx('note')}>
-                    Automatically cancel running builds if newer commit pushed.
+                    如果有新的提交推送上来，自动取消正在运行的build。
                   </p>
                 </div>
               </>
             )}
           </FormSection>
-          <FormSection className={cx('form-section-row')} title="Project Visibility">
+          <FormSection className={cx('form-section-row')} title="项目可见性">
             <ul className={cx('visibility-container')}>
               <li className={cx('visibility-card-wrapper')}>
                 <div className={cx('visibility-card')}>
-                  <h4>Private</h4>
-                  <p>Private repositories are only accessible to people you explicitly share access with.</p>
+                  <h4>私有</h4>
+                  <p>私有库只有你明确与之共享访问权限的人才能访问。</p>
                 </div>
                 <Field.Radio
                   name="private"
@@ -217,8 +217,8 @@ export default function General({ user, repo }) {
               </li>
               <li className={cx('visibility-card-wrapper')}>
                 <div className={cx('visibility-card')}>
-                  <h4>Public</h4>
-                  <p>Public repositories are accessible to everyone on the internet.</p>
+                  <h4>公共</h4>
+                  <p>公共库所有能访问本服务器的人都能访问。</p>
                 </div>
                 <Field.Radio
                   name="public"
@@ -231,8 +231,8 @@ export default function General({ user, repo }) {
 
               <li className={cx('visibility-card-wrapper')}>
                 <div className={cx('visibility-card')}>
-                  <h4>Internal</h4>
-                  <p>Internal repositories are only accessible to authenticated user.</p>
+                  <h4>内部</h4>
+                  <p>内部库只有认证用户才可以访问。</p>
                 </div>
                 <Field.Radio
                   name="internal"
@@ -246,7 +246,7 @@ export default function General({ user, repo }) {
           </FormSection>
           <FormSection className={cx('form-section-row', 'form-section-row-is-last')}>
             <Field.Select
-              label="Timeout"
+              label="超时"
               value={settings.timeout}
               optionsList={buildTimeoutsOptions(TIMEOUTS)}
               width={200}
@@ -254,7 +254,7 @@ export default function General({ user, repo }) {
               onChange={handleSettingsChange('timeout')}
             />
             <Field.Input
-              label="Configuration"
+              label="配置文件"
               name="configuration"
               value={settings.config_path}
               width={372}
@@ -269,7 +269,7 @@ export default function General({ user, repo }) {
               type="button"
               onClick={handleSettingsSubmit}
             >
-              Save Changes
+              保存修改
             </button>
             <button
               className={cx('btn', 'btn-disable')}
@@ -277,7 +277,7 @@ export default function General({ user, repo }) {
               onClick={handleDisableRepo}
             >
               <NotAllowedIcon />
-              Disable
+              禁用
             </button>
           </div>
         </Form>

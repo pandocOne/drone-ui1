@@ -43,7 +43,7 @@ export default function Branches({ repo }) {
     );
   } else {
     content = (
-      <ZeroState title="Your Branch List is Empty." message="This list will be populated when you execute a pipeline for an open branch." />
+      <ZeroState title="分支列表为空." message="你给一个开放分支执行pipeline时会生成分支列表." />
     );
   }
   return (
@@ -72,10 +72,10 @@ function BranchListView(props) {
     <>
       <div className={cx('branch-list-header')}>
         <div />
-        <div>Branch</div>
-        <div>Commit</div>
-        <div>Committer</div>
-        <div>Message</div>
+        <div>分支</div>
+        <div>提交Commit</div>
+        <div>提交人</div>
+        <div>提交信息</div>
       </div>
       <div className={cx('branch-list')}>
         {data.map((build) => (

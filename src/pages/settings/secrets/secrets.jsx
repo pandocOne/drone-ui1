@@ -28,9 +28,9 @@ export default function Secrets() {
           data: values,
         });
       mutate((prev) => prev.concat(res), false);
-      showSuccess('Secret has been added successfully');
+      showSuccess('成功添加秘密信息');
     } catch (e) {
-      showError(`Unable to add secret: ${e.message}`);
+      showError(`无法添加秘密信息: ${e.message}`);
       // eslint-disable-next-line no-console
       console.warn(e.message);
     }
@@ -38,16 +38,16 @@ export default function Secrets() {
 
   const handleRemoveSecret = (secretName) => async () => {
     // eslint-disable-next-line no-alert
-    const userAgreed = window.confirm('Are you sure you want to delete this secret?');
+    const userAgreed = window.confirm('确定要删除此秘密信息?');
     if (userAgreed) {
       try {
         await axiosWrapper(`/api/repos/${namespace}/${name}/secrets/${secretName}`, {
           method: 'DELETE',
         });
         mutate(data.filter((secretItem) => secretItem.name !== secretName), false);
-        showSuccess('Secret has been removed successfully');
+        showSuccess('秘密信息成功删除');
       } catch (e) {
-        showError(`Unable to remove secret: ${e.message}`);
+        showError(`无法删除秘密信息: ${e.message}`);
         // eslint-disable-next-line no-console
         console.warn(e.message);
       }
@@ -64,8 +64,8 @@ export default function Secrets() {
   } else {
     secrets = (
       <div className={cx('zero')}>
-        <h2>No Secrets</h2>
-        <p>Manage sensitive configuration parameters, such as passwords, tokens, and ssh keys.</p>
+        <h2>没有秘密信息</h2>
+        <p>管理敏感配置参数，如口令、token、ssh key等.</p>
       </div>
     );
   }
@@ -80,14 +80,14 @@ export default function Secrets() {
               icon={<DemoIcon />}
               onClick={toggleModal}
             >
-              New Secret
+              新建秘密信息
             </Button>
           </div>
           {secrets}
         </div>
       </div>
       <Modal
-        title="Create a New Secret"
+        title="添加新的秘密信息"
         isShowing={isModalShowing}
         hide={toggleModal}
       >

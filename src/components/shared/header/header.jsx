@@ -18,7 +18,7 @@ const buildBreadcrumbs = ({ namespace, name, build }) => {
   );
   return (
     <nav className={cx('header-row', 'breadcrumbs')}>
-      <Link to="/">Repositories</Link>
+      <Link to="/">库</Link>
       {repo}
       {build && (
         <span>

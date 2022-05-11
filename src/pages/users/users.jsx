@@ -21,7 +21,7 @@ const sortUsersAlphabetically = (users) => users.sort((a, b) => a.login - b.logi
 
 export default function Users({ user: currentUser }) {
   const [showAllUsers, setShowAllUsers] = useState(false);
-  useCustomTitle('User Management');
+  useCustomTitle('用户管理');
   const { showError, showSuccess } = useToast();
   const { data, isLoading, mutate } = useUserList();
   const [isModalShowing, toggleModal] = useModal();
@@ -50,9 +50,9 @@ export default function Users({ user: currentUser }) {
         },
       });
       mutate();
-      showSuccess('New user has been created successfully');
+      showSuccess('新用户创建成功');
     } catch (err) {
-      showError(`Unable to create new user: ${err.message}`);
+      showError(`无法创建新用户: ${err.message}`);
       // eslint-disable-next-line no-console
       console.warn(err.message);
     }
@@ -68,24 +68,24 @@ export default function Users({ user: currentUser }) {
         },
       });
       mutate();
-      showSuccess('User settings have been updated');
+      showSuccess('用户设置已更新');
     } catch (err) {
-      showError(`Unable to create new user: ${err.message}`);
+      showError(`无法更新用户: ${err.message}`);
       // eslint-disable-next-line no-console
       console.warn(err.message);
     }
   }, [mutate, showError, showSuccess]);
 
   const handleUserDelete = useCallback(async (login) => {
-    const userAgreed = confirm('Are you sure you want to delete this user?');
+    const userAgreed = confirm('确定要删除此用户?');
     if (userAgreed) {
       try {
         await axiosWrapper(`/api/users/${login}`, { method: 'DELETE' });
         setModalUserId('new');
         mutate((prev) => prev.filter((user) => user.login !== login), false);
-        showSuccess('User has been deleted successfully');
+        showSuccess('用户已被成功删除');
       } catch (e) {
-        showError(`Unable to delete user: ${e.message}`);
+        showError(`无法删除用户: ${e.message}`);
         // eslint-disable-next-line
       console.error(e)
       }
@@ -103,10 +103,10 @@ export default function Users({ user: currentUser }) {
               icon={<DemoIcon />}
               onClick={handleNewUserClick}
             >
-              New User
+              新建用户
             </Button>
           </div>
-          {isLoading ? <p>Loading...</p> : (
+          {isLoading ? <p>加载中...</p> : (
             <UserList
               users={users}
               currentUser={currentUser}
@@ -118,14 +118,14 @@ export default function Users({ user: currentUser }) {
             className={cx('btn', 'btn-show-more')}
             onClick={handleShowMoreClick}
           >
-            Show More &#8595;
+            显示更多 &#8595;
 
           </Button>
           )}
         </div>
       </section>
       <Modal
-        title={modalUserId === 'new' ? 'Create a New User' : 'Edit user'}
+        title={modalUserId === 'new' ? '创建新用户' : '编辑用户'}
         isShowing={isModalShowing}
         hide={toggleModal}
       >

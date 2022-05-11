@@ -17,7 +17,7 @@ const getTabProps = () => [
   {
     to: '/settings/users',
     exact: true,
-    label: 'Users',
+    label: '用户',
   },
   // {
   //   to: '/settings/admin',
@@ -47,7 +47,7 @@ const SettingsAdmin = ({ user }) => {
     <>
       <header className={cx('header')}>
         <div className={cx('inner')}>
-          <h1>System Administration</h1>
+          <h1>系统管理</h1>
         </div>
       </header>
       {navEl}

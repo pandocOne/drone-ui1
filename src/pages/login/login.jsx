@@ -26,13 +26,13 @@ export default function LoginForm() {
           <DroneLogo />
         </div>
         <div className={cx('header')}>
-          <h1 className={cx('title')}>Sign in using your Gogs credentials.</h1>
-          <span className={cx('title-sub')}>使用您的Gogs用户名和密码登录</span>
+          <h1 className={cx('title')}>使用您的版本管理系统用户名和密码登录.</h1>
+          <span className={cx('title-sub')}>使用您的版本管理系统用户名和密码登录</span>
         </div>
         <Form className={cx('form')} method="POST" action="/login">
           <FormSection>
             <Field.Input
-              label="Username"
+              label="用户名"
               name="username"
               width="100%"
               type="text"
@@ -42,7 +42,7 @@ export default function LoginForm() {
           </FormSection>
           <FormSection>
             <Field.Input
-              label="Password"
+              label="口令"
               name="password"
               width="100%"
               type="password"

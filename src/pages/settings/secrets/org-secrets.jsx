@@ -28,9 +28,9 @@ export default function OrgSecrets() {
           data: values,
         });
       mutate((prev) => prev.concat(res), false);
-      showSuccess('Organization secret has been added successfully');
+      showSuccess('组织秘密信息添加成功');
     } catch (e) {
-      showError(`Unable to add organization secret: ${e.message}`);
+      showError(`无法添加组织秘密信息: ${e.message}`);
       // eslint-disable-next-line no-console
       console.warn(e.message);
     }
@@ -38,16 +38,16 @@ export default function OrgSecrets() {
 
   const handleRemoveSecret = (secretName) => async () => {
     // eslint-disable-next-line no-alert
-    const userAgreed = window.confirm('Are you sure you want to delete this organization secret?');
+    const userAgreed = window.confirm('确定要删除此组织秘密信息?');
     if (userAgreed) {
       try {
         await axiosWrapper(`/api/secrets/${namespace}/${secretName}`, {
           method: 'DELETE',
         });
         mutate(data.filter((secretItem) => secretItem.name !== secretName), false);
-        showSuccess('Organization secret has been removed successfully');
+        showSuccess('成功删除组织秘密信息');
       } catch (e) {
-        showError(`Unable to remove organization secret: ${e.message}`);
+        showError(`无法删除组织秘密信息: ${e.message}`);
         // eslint-disable-next-line no-console
         console.warn(e.message);
       }
@@ -64,8 +64,8 @@ export default function OrgSecrets() {
   } else {
     secrets = (
       <div className={cx('zero')}>
-        <h2>No Organization Secrets</h2>
-        <p>Manage sensitive configuration parameters, such as passwords, tokens, and ssh keys.</p>
+        <h2>没有组织秘密信息</h2>
+        <p>管理敏感配置参数，如口令、token、ssh key等.</p>
       </div>
     );
   }
@@ -80,14 +80,14 @@ export default function OrgSecrets() {
               icon={<DemoIcon />}
               onClick={toggleModal}
             >
-              New Organization Secret
+              新建组织秘密信息
             </Button>
           </div>
           {secrets}
         </div>
       </div>
       <Modal
-        title="Create a New Organization Secret"
+        title="设置新的组织秘密信息"
         isShowing={isModalShowing}
         hide={toggleModal}
       >

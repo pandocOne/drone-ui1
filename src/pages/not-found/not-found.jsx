@@ -12,14 +12,14 @@ import css from './not-found.module.scss';
 const cx = classNames.bind(css);
 
 export default function NotFound({ user }) {
-  useCustomTitle('Not Found');
+  useCustomTitle('未找到');
 
   return (
     <section className={cx('wrapper')}>
       <div className={cx('inner')}>
         <NotFoundIcon />
         <p className={cx('note')}>
-          <span>We are sorry, the resource you requested cannot be found.</span>
+          <span>你请求的资源未找到.</span>
           <sub>That's all we know.</sub>
         </p>
         {!user && (
@@ -29,7 +29,7 @@ export default function NotFound({ user }) {
             theme="primary"
             className={cx('btn')}
           >
-            Sign In
+            登录
           </Button>
         )}
       </div>

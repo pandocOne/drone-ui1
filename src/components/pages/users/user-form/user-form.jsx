@@ -32,7 +32,7 @@ const EditUserForm = ({
     <Form className={cx('new-user-form')}>
       <FormSection className={cx('new-user-form-column')}>
         <Field.Checkbox
-          label="Admin User"
+          label="管理用户"
           name="admin"
           checked={state.admin}
           onChange={handleFieldChange('admin')}
@@ -40,7 +40,7 @@ const EditUserForm = ({
       </FormSection>
       <FormSection className={cx('new-user-form-column')}>
         <Field.Checkbox
-          label="Machine User"
+          label="机器用户"
           name="machine"
           checked={state.machine}
           disabled
@@ -54,7 +54,7 @@ const EditUserForm = ({
           type="button"
           onClick={handleSubmitMiddleware}
         >
-          Save
+          保存
         </Button>
         <Button
           className={cx('cancel')}
@@ -62,7 +62,7 @@ const EditUserForm = ({
           type="button"
           onClick={handleCancel}
         >
-          Cancel
+          取消
         </Button>
         <Button
           className={cx('delete')}
@@ -70,7 +70,7 @@ const EditUserForm = ({
           icon={<NotAllowedIcon />}
           onClick={handleDeleteMiddleware}
         >
-          Delete
+          删除
         </Button>
       </FormSection>
     </Form>
@@ -116,8 +116,8 @@ const NewUserForm = ({ handleSubmit, handleCancel }) => {
     <Form className={cx('new-user-form')}>
       <FormSection className={cx('new-user-form-column')}>
         <Field.Input
-          label="Login"
-          placeholder="userlogin"
+          label="登录"
+          placeholder="用户名"
           value={state.login}
           name="login"
           width={400}
@@ -139,7 +139,7 @@ const NewUserForm = ({ handleSubmit, handleCancel }) => {
       </FormSection>
       <FormSection className={cx('new-user-form-column')}>
         <Field.Checkbox
-          label="Admin User"
+          label="管理用户"
           name="admin"
           checked={state.admin}
           onChange={handleFieldChange('admin')}
@@ -147,7 +147,7 @@ const NewUserForm = ({ handleSubmit, handleCancel }) => {
       </FormSection>
       <FormSection className={cx('new-user-form-column')}>
         <Field.Checkbox
-          label="Machine User"
+          label="机器用户"
           name="machine"
           checked={state.machine}
           onChange={handleFieldChange('machine')}
@@ -159,7 +159,7 @@ const NewUserForm = ({ handleSubmit, handleCancel }) => {
           theme="primary"
           onClick={handleSubmitMiddleware}
         >
-          Create
+          生成
         </Button>
         <Button
           className={cx('cancel')}
@@ -167,7 +167,7 @@ const NewUserForm = ({ handleSubmit, handleCancel }) => {
           type="button"
           onClick={handleCancel}
         >
-          Cancel
+          取消
         </Button>
       </FormSection>
     </Form>

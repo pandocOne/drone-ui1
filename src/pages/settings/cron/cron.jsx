@@ -35,7 +35,7 @@ const NewCronForm = ({ handleSubmit, handleCancel }) => {
     <Form className={cx('container', 'form')}>
       <FormSection className={cx('group', 'group-fields')}>
         <Field.Input
-          label="Name"
+          label="名称"
           value={state.name}
           name="cron-name"
           width={350}
@@ -43,7 +43,7 @@ const NewCronForm = ({ handleSubmit, handleCancel }) => {
           onChange={handleCronChange('name')}
         />
         <Field.Input
-          label="Branch"
+          label="分支"
           value={state.branch}
           placeholder="master"
           name="cron-branch"
@@ -51,7 +51,7 @@ const NewCronForm = ({ handleSubmit, handleCancel }) => {
           onChange={handleCronChange('branch')}
         />
         <Field.Select
-          label="Schedule"
+          label="时间表"
           value={state.expr}
           optionsList={CRON_OPTIONS}
           width={350}
@@ -62,10 +62,10 @@ const NewCronForm = ({ handleSubmit, handleCancel }) => {
         <Button
           onClick={handleAddCron}
         >
-          Create
+          生成
         </Button>
         <Button onClick={handleCancel}>
-          Cancel
+          取消
         </Button>
       </FormSection>
     </Form>
@@ -91,7 +91,7 @@ export default function Secrets() {
         data: { ...values, branch: values.branch || 'master' },
       });
       mutate((prev) => prev.concat(res), false);
-      showSuccess('Cron has been added successfully');
+      showSuccess('定时任务成功添加');
     } catch (e) {
       showError(e.message);
       // eslint-disable-next-line no-console
@@ -100,11 +100,11 @@ export default function Secrets() {
   }, [namespace, name, mutate, showSuccess, showError]);
 
   const handleRemoveCron = (cronName) => async () => {
-    const userAgreed = confirm('Are you sure you want to remove cron job?');
+    const userAgreed = confirm('你确定要删除此定时任务?');
     if (userAgreed) {
       try {
         await axiosWrapper(`/api/repos/${namespace}/${name}/cron/${cronName}`, { method: 'DELETE' });
-        showSuccess('Cron has been removed successfully');
+        showSuccess('定时任务被成功删除');
         mutate(data.filter((cronItem) => cronItem.name !== cronName), false);
       } catch (e) {
         showError(e.message);
@@ -123,8 +123,8 @@ export default function Secrets() {
   } else {
     crons = (
       <div className={cx('zero')}>
-        <h2>No Cron Jobs</h2>
-        <p>You can create cron jobs to schedule pipeline executions on a recurring basis.</p>
+        <h2>无定时任务</h2>
+        <p>你可以生成定时任务来按时间表循环执行pipeline.</p>
       </div>
     );
   }
@@ -143,7 +143,7 @@ export default function Secrets() {
                   icon={<DemoIcon />}
                   onClick={toggleModal}
                 >
-                  New Cron Job
+                  新建定时任务
                 </Button>
               </div>
               {crons}
@@ -152,7 +152,7 @@ export default function Secrets() {
         </div>
       </div>
       <Modal
-        title="Create a New Cron Job"
+        title="新建定时任务"
         isShowing={isModalShowing}
         hide={toggleModal}
       >
@@ -169,10 +169,10 @@ function CronListView(props) {
   return (
     <div className={cx('cron-list-wrapper')}>
       <div className={cx('cron-list-header')}>
-        <div>Name</div>
-        <div>Branch</div>
-        <div>Schedule</div>
-        <div>Next Execution</div>
+        <div>名称</div>
+        <div>分支</div>
+        <div>时间表</div>
+        <div>下次执行</div>
         <div />
       </div>
       <div className={cx('cron-list')}>

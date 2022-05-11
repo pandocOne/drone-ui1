@@ -39,7 +39,7 @@ export default function StageNav(props) {
         {isDataLoading ? (
           <div className={cx('stage')}>
             <h3 className={cx('stage-header')}>
-              Loading...
+              加载中...
             </h3>
           </div>
         )

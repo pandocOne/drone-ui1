@@ -26,7 +26,7 @@ const SearchCard = ({ query, slug, handleLinkClick }) => (
         <b>{query}</b>
         &quot; in
         {' '}
-        <b>Repositories</b>
+        <b>库</b>
       </span>
       <p className={cx('search-card-content')}>
         <Link to={`/${slug}`} onClick={handleLinkClick}>{slug}</Link>
@@ -99,12 +99,12 @@ const SearchDrawer = ({ isShown, hide }) => {
             tabIndex={0}
             className={cx('input')}
             type="text"
-            placeholder="Search repositories"
+            placeholder="搜索库"
             onChange={handleSearchInput}
           />
         </div>
         <div className={cx('wrapper-results')}>
-          <span className={cx('kicker')}>Search results</span>
+          <span className={cx('kicker')}>搜索结果</span>
           <div className={cx('results')}>
             {content}
           </div>

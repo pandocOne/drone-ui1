@@ -56,14 +56,14 @@ const NewBuildForm = ({ handleSubmit, handleCancel }) => {
     <Form className={cx('new-build-form')}>
       <FormSection className={cx('new-build-form-column')}>
         <Field.Input
-          label="Branch"
+          label="分支"
           placeholder="master"
           value={state.target}
           name="branch"
           onChange={handleFieldChange('target')}
         />
       </FormSection>
-      <FormSection title="Parameters" className={cx('new-build-form-column')}>
+      <FormSection title="参数" className={cx('new-build-form-column')}>
         {state.parameters.length ? (
           <div className={cx('new-build-form-parameters-list')}>
             {state.parameters.map(({ key, value, id }) => (
@@ -100,8 +100,8 @@ const NewBuildForm = ({ handleSubmit, handleCancel }) => {
         </div>
       </FormSection>
       <FormSection className={cx('new-build-form-controls')}>
-        <Button theme="primary" type="submit" onClick={handleSubmitMiddleware}>Create</Button>
-        <Button theme="primary" type="button" onClick={handleCancel}>Cancel</Button>
+        <Button theme="primary" type="submit" onClick={handleSubmitMiddleware}>生成</Button>
+        <Button theme="primary" type="button" onClick={handleCancel}>取消</Button>
       </FormSection>
     </Form>
   );

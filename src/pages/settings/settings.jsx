@@ -30,20 +30,20 @@ const SettingsInactive = ({
   <section className={cx('inactive-wrapper')}>
     <div className={cx('inactive-inner')}>
       <NotActiveIcon />
-      <h2>This Repository is not Active.</h2>
+      <h2>本库尚未激活.</h2>
       {showActivationBtn ? (
         <>
-          <p>Please activate your repository to begin executing pipelines.</p>
+          <p>请先激活库，然后才能执行pipeline.</p>
           <Button
             theme="primary"
             icon={<DemoIcon />}
             onClick={activationHandler}
           >
-            Activate Repository
+            激活本库
           </Button>
         </>
       ) : (
-        <p>Please contact the repository administrator to activate this repository.</p>
+        <p>请联系库管理员激活此库.</p>
       )}
     </div>
   </section>
@@ -72,7 +72,7 @@ export default function Settings({ user, repo }) {
     try {
       const res = await axiosWrapper(`/api/repos/${namespace}/${name}`, { method: 'POST' });
       mutate(res, false);
-      showSuccess('Repo has been successfully enabled');
+      showSuccess('库已被成功使能');
     } catch (e) {
       showError(e.message);
       // eslint-disable-next-line no-console
@@ -94,7 +94,7 @@ export default function Settings({ user, repo }) {
                 to={`/${namespace}/${name}/settings`}
                 exact
               >
-                General
+                一般设置
               </NavLink>
               <NavLink
                 className={cx('settings-nav-item')}
@@ -102,7 +102,7 @@ export default function Settings({ user, repo }) {
                 to={`/${namespace}/${name}/settings/secrets`}
                 exact
               >
-                Secrets
+                秘密信息
               </NavLink>
               <NavLink
                 className={cx('settings-nav-item')}
@@ -110,7 +110,7 @@ export default function Settings({ user, repo }) {
                 to={`/${namespace}/${name}/settings/cron`}
                 exact
               >
-                Cron Jobs
+                定时任务
               </NavLink>
               <NavLink
                 className={cx('settings-nav-item')}
@@ -118,16 +118,16 @@ export default function Settings({ user, repo }) {
                 to={`/${namespace}/${name}/settings/badges`}
                 exact
               >
-                Badges
+                标记
               </NavLink>
-              <h3 className={cx('settings-nav-section-header')}>Organization</h3>
+              <h3 className={cx('settings-nav-section-header')}>组织</h3>
               <NavLink
                 className={cx('settings-nav-item')}
                 activeClassName={cx('settings-nav-item-active')}
                 to={`/${namespace}/${name}/settings/org-secrets`}
                 exact
               >
-                Secrets
+                组织秘密信息
               </NavLink>
               <NavLink
                 className={cx('settings-nav-item')}
@@ -135,7 +135,7 @@ export default function Settings({ user, repo }) {
                 to={`/${namespace}/${name}/settings/templates`}
                 exact
               >
-                Templates
+                模板
               </NavLink>
             </nav>
           </aside>

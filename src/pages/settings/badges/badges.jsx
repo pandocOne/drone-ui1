@@ -94,7 +94,7 @@ export default function Main() {
         <Form className={cx('group')}>
           <div className={cx('group', 'group-badge')}>
             <Field.Select
-              label="Syntax"
+              label="语法"
               name="syntax"
               value={badge.snippetSyntax}
               optionsList={BADGE_OPTIONS}
@@ -102,7 +102,7 @@ export default function Main() {
               onChange={handleBadgeSyntaxChange}
             />
             <Field.Input
-              label="Branch"
+              label="分支"
               name="branch"
               placeholder="master"
               value={badge.branch}
@@ -116,7 +116,7 @@ export default function Main() {
               onCopy={handleCopyClick}
             >
               <Button className={cx('copy-btn')} type="button">
-                {isSnippetCopied ? 'Copied!' : <CopyIcon />}
+                {isSnippetCopied ? '复制成功!' : <CopyIcon />}
               </Button>
             </CopyToClipboard>
             <code>

@@ -38,24 +38,24 @@ export const NewSecretForm = ({ handleSubmit, handleCancel }) => {
     >
       <FormSection className={cx('group', 'group-fields')}>
         <Field.Input
-          placeholder="Secret Name"
+          placeholder="秘密信息名称"
           value={state.name}
-          label="Name"
+          label="名称"
           name="secret-name"
           width={350}
           autoFocus
           onChange={handleSecretChange('name')}
         />
         <Field.TextArea
-          label="Value"
-          placeholder="Secret value"
+          label="值"
+          placeholder="秘密信息值"
           value={state.data}
           name="secret-value"
           width={350}
           onChange={handleSecretChange('data')}
         />
         <Field.Checkbox
-          label="Allow Pull Requests"
+          label="允许 Pull Requests"
           name="pull_request"
           checked={state.pull_request}
           onChange={handleSecretChange('pull_request')}
@@ -65,12 +65,12 @@ export const NewSecretForm = ({ handleSubmit, handleCancel }) => {
         <Button
           onClick={handleAddSecret}
         >
-          Create
+          添加
         </Button>
         <Button
           onClick={handleCancel}
         >
-          Cancel
+          取消
         </Button>
       </FormSection>
     </Form>
@@ -80,7 +80,7 @@ export const NewSecretForm = ({ handleSubmit, handleCancel }) => {
 export const SecretListView = ({ secrets, handleRemove }) => (
   <div className={cx('secret-list-wrapper')}>
     <div className={cx('secret-list-header')}>
-      <div>Name</div>
+      <div>名称</div>
       <div>Pull Requests</div>
       <div />
     </div>

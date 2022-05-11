@@ -42,12 +42,12 @@ export default function LoginForm() {
           <DroneLogo />
         </div>
         <div className={cx('header')}>
-          <h1 className={cx('title')}>Complete your Drone Registration.</h1>
+          <h1 className={cx('title')}>请完成注册过程.</h1>
         </div>
         <Form className={cx('form')} onSubmit={(e) => e.preventDefault()}>
           <FormSection>
             <Field.Input
-              label="Your Email"
+              label="Email"
               name="email"
               width="100%"
               type="email"
@@ -57,7 +57,7 @@ export default function LoginForm() {
           </FormSection>
           <FormSection>
             <Field.Input
-              label="Your Full Name"
+              label="你的全名"
               name="name"
               width="100%"
               type="text"
@@ -67,7 +67,7 @@ export default function LoginForm() {
           </FormSection>
           <FormSection>
             <Field.Input
-              label="Company Name"
+              label="单位名称"
               name="name"
               width="100%"
               type="text"

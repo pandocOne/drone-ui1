@@ -56,7 +56,7 @@ const Summary = (props) => {
       <div className={cx('info')}>
         <ul className={cx('summary')}>
           <li className={cx('item')}>
-            <span className={cx('item-heading')}>Total Builds</span>
+            <span className={cx('item-heading')}>Build总数</span>
             <span className={cx('item-content')}>
               <span>
                 {totalBuildsCounter}
@@ -64,7 +64,7 @@ const Summary = (props) => {
             </span>
           </li>
           <li className={cx('item')}>
-            <span className={cx('item-heading')}>Median Build</span>
+            <span className={cx('item-heading')}>平均耗时</span>
             <span className={cx('item-content')}>
               <span>
                 {median}
@@ -73,7 +73,7 @@ const Summary = (props) => {
             </span>
           </li>
           <li className={cx('item')}>
-            <span className={cx('item-heading')}>Last Build</span>
+            <span className={cx('item-heading')}>最后一次Build</span>
             <span className={cx('item-content')}>
               {/* @NOTE: putting "ago" description and units under
                 * the sub tag in order to prevent broken layout */}
@@ -84,7 +84,7 @@ const Summary = (props) => {
             </span>
           </li>
           <li className={cx('item')}>
-            <span className={cx('item-heading')}>Last Status</span>
+            <span className={cx('item-heading')}>最后状态</span>
             <span className={cx('item-content')}>
               <span className={cx('status', `status-${latest.status}`)}>
                 {latest.status}

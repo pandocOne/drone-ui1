@@ -26,7 +26,7 @@ export default function Welcome() {
   let error = null;
   switch (pathname) {
     case '/logout':
-      error = <div className={cx('error')}>Your session has been successfully terminated.</div>;
+      error = <div className={cx('error')}>你已成功登出.</div>;
       break;
     case '/login/error':
       if (window.location.host === 'cloud.drone.io') {
@@ -46,7 +46,7 @@ export default function Welcome() {
       } else {
         error = (
           <div className={cx('error')}>
-            {parseQuery(search)?.message ?? 'An error occured during login attempt, please, try again'}
+            {parseQuery(search)?.message ?? '登录发生错误，请再试一次'}
           </div>
         );
       }
@@ -61,15 +61,13 @@ export default function Welcome() {
         </div>
         <div className={cx('header')}>
           <h1 className={cx('title')}>
-            Hello,
-            <br />
-            Welcome to Drone.
+            欢迎使用 Drone.
           </h1>
           {error}
-          <p>You will be redirected to your source control management system to authenticate.</p>
+          <p>你将被重定向到Gitea登录界面登录</p>
         </div>
         <a href="/login" target="_self" className={cx('btn')}>
-          <span>Continue</span>
+          <span>继续</span>
           <ChevronDownIcon className={cx('chevron-right')} />
         </a>
       </div>

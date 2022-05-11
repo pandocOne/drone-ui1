@@ -84,7 +84,7 @@ const DeploymentForm = ({ handleSubmit, handleCancel }) => {
       </FormSection>
       <FormSection
         className={cx('deployment-form-row')}
-        title="Target"
+        title="目标"
       >
         <Field.Input
           autoFocus="true"
@@ -94,7 +94,7 @@ const DeploymentForm = ({ handleSubmit, handleCancel }) => {
           onChange={handleDeploymentChange('target')}
         />
       </FormSection>
-      <FormSection title="Parameters" className={cx('deployment-form-row')}>
+      <FormSection title="参数" className={cx('deployment-form-row')}>
         {state.parameters.length ? (
           <div className={cx('deployment-form-parameters-list')}>
             {state.parameters.map(({ key, id }) => (
@@ -122,8 +122,8 @@ const DeploymentForm = ({ handleSubmit, handleCancel }) => {
         </div>
       </FormSection>
       <FormSection className={cx('deployment-form-controls')}>
-        <Button type="button" onClick={handleSubmitMiddleware}>Deploy</Button>
-        <Button type="button" onClick={handleCancel}>Cancel</Button>
+        <Button type="button" onClick={handleSubmitMiddleware}>部署</Button>
+        <Button type="button" onClick={handleCancel}>取消</Button>
       </FormSection>
     </Form>
   );

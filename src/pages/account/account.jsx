@@ -32,7 +32,7 @@ export default function Account() {
 
   const { data } = useViewerToken();
 
-  useCustomTitle('Account');
+  useCustomTitle('帐户');
 
   const handleCopyClick = (snippetCategory) => () => {
     setSnippets((prev) => ({
@@ -74,14 +74,14 @@ export default function Account() {
   return (
     <>
       <header className={cx('header')}>
-        <h1>Account Settings</h1>
-        <a href="/logout" target="_self">Logout</a>
+        <h1>帐户设置</h1>
+        <a href="/logout" target="_self">登出</a>
       </header>
       <section className={cx('wrapper')}>
         {snippets.token.snippet ? (
           <div>
             <div className={cx('row')}>
-              <span className={cx('label')}>Your personal token:</span>
+              <span className={cx('label')}>你的个人token:</span>
               <pre className={cx('snippet')}>
                 <CopyToClipboard
                   text={snippets.token.snippet}
@@ -97,7 +97,7 @@ export default function Account() {
               </pre>
             </div>
             <div className={cx('row')}>
-              <span className={cx('label')}>Example API Usage:</span>
+              <span className={cx('label')}>API使用举例:</span>
               <pre className={cx('snippet')}>
                 <CopyToClipboard
                   text={snippets.api.snippet.join('\n')}
@@ -122,7 +122,7 @@ export default function Account() {
               </pre>
             </div>
             <div className={cx('row')}>
-              <span className={cx('label')}>Example CLI Usage:</span>
+              <span className={cx('label')}>命令行使用举例:</span>
               <pre className={cx('snippet')}>
                 <CopyToClipboard
                   text={snippets.cli.snippet?.join('\n')}

@@ -45,8 +45,8 @@ export default function Deployments({ repo }) {
   } else {
     content = (
       <ZeroState
-        title="Your Deployment List is Empty."
-        message="This list will be populated when you promote or rollback a build."
+        title="部署列表为空."
+        message="你promote或rollback一个build时会生成部署列表."
       />
     );
   }

@@ -108,7 +108,7 @@ const NewTemplateForm = ({ handleSubmit, handleCancel }) => {
     <Form className={cx('container', 'form')}>
       <FormSection className={cx('group', 'group-fields')}>
         <Field.Input
-          label="Name"
+          label="模板名"
           value={state.name}
           name="template-name"
           width={700}
@@ -116,7 +116,7 @@ const NewTemplateForm = ({ handleSubmit, handleCancel }) => {
           onChange={handleTemplateChange('name')}
         />
         <Field.Select
-          label="Extension"
+          label="扩展"
           value={state.ext}
           optionsList={EXT_OPTIONS}
           width={700}
@@ -135,10 +135,10 @@ const NewTemplateForm = ({ handleSubmit, handleCancel }) => {
         <Button
           onClick={handleAddTemplate}
         >
-          Create
+          生成
         </Button>
         <Button onClick={handleCancel}>
-          Cancel
+          取消
         </Button>
       </FormSection>
     </Form>
@@ -198,7 +198,7 @@ export default function Templates() {
         data: { data: values.data, name: `${values.name}${values.ext}` },
       });
       mutate((prev) => [res, ...prev], false);
-      showSuccess('Template has been added successfully');
+      showSuccess('成功添加模板');
     } catch (e) {
       showError(e.message);
       // eslint-disable-next-line no-console
@@ -213,7 +213,7 @@ export default function Templates() {
         data: { data: templateData },
       });
       mutate((prev) => [res, ...prev.filter((templateItem) => templateItem.name !== templateName)], false);
-      showSuccess('Template has been edited successfully');
+      showSuccess('成功修改模板');
     } catch (e) {
       showError(e.message);
       // eslint-disable-next-line no-console
@@ -223,11 +223,11 @@ export default function Templates() {
 
   const handleRemoveTemplate = (templateName) => async () => {
     // eslint-disable-next-line no-alert
-    const userAgreed = window.confirm('Are you sure you want to remove template?');
+    const userAgreed = window.confirm('确定要删除此模板?');
     if (userAgreed) {
       try {
         await axiosWrapper(`/api/templates/${namespace}/${templateName}`, { method: 'DELETE' });
-        showSuccess('Template has been removed successfully');
+        showSuccess('成功删除模板');
         mutate((prev) => prev.filter((templateItem) => templateItem.name !== templateName), false);
       } catch (e) {
         showError(e.message);
@@ -255,10 +255,9 @@ export default function Templates() {
   } else {
     templates = (
       <div className={cx('zero')}>
-        <h2>No Templates</h2>
+        <h2>尚无模板</h2>
         <p>
-          You can create templates to simplify configuration management
-          if you have large numbers of similar configuration files.
+          如果你有大量类似配置文件，可以生成模板来简化配置管理
         </p>
       </div>
     );
@@ -278,7 +277,7 @@ export default function Templates() {
                   icon={<DemoIcon />}
                   onClick={toggleModal}
                 >
-                  New Template
+                  新建模板
                 </Button>
               </div>
               {templates}
@@ -287,7 +286,7 @@ export default function Templates() {
         </div>
       </div>
       <Modal
-        title="Create a New Template"
+        title="生成新模板"
         isShowing={isModalShowing}
         hide={toggleModal}
       >
@@ -297,7 +296,7 @@ export default function Templates() {
         />
       </Modal>
       <Modal
-        title="Edit Template"
+        title="编辑模板"
         isShowing={isEditModalShowing}
         hide={toggleEditModal}
       >

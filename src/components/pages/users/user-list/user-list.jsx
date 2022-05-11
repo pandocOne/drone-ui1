@@ -19,12 +19,12 @@ const UserList = (props) => (
   <div className={cx('user-list-wrapper')}>
     <div className={cx('user-list-header')}>
       <div />
-      <div>Username</div>
-      <div>Active</div>
-      <div>Type</div>
-      <div>Role</div>
-      <div>Created</div>
-      <div>Last Login</div>
+      <div>用户名</div>
+      <div>激活</div>
+      <div>种类</div>
+      <div>角色</div>
+      <div>创建日期</div>
+      <div>最后登录</div>
     </div>
     <div className={cx('user-list')}>
       {props?.users?.map((user) => (
@@ -47,9 +47,9 @@ function UserListItem({ data, isCurrentUser, handleEditClick }) {
           <Avatar className={cx('avatar')} text={data.login} path={data.avatar} alt={data.login} />
         </div>
         <div>{data.login}</div>
-        <div>{data.active ? 'Active' : 'Inactive'}</div>
-        <div>{data.machine ? 'Machine' : 'User'}</div>
-        <div>{data.admin ? 'Admin' : 'Member'}</div>
+        <div>{data.active ? '已激活' : '未激活'}</div>
+        <div>{data.machine ? '机器' : '用户'}</div>
+        <div>{data.admin ? '管理员' : '成员'}</div>
         <div>{formatDistanceStrict(new Date(data.created * 1000), new Date(), { addSuffix: true })}</div>
         <div>
           {data.last_login === 0

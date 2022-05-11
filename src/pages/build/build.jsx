@@ -124,10 +124,10 @@ export default function Build({ user, userIsAdminOrHasWritePerm }) {
       if (res) {
         history.push(`/${namespace}/${name}/${res.number}`);
       } else {
-        showError('Unable to create new deploy in this repo');
+        showError('本库无法生成新部署');
       }
     } catch (e) {
-      showError(`Unable to create new deploy: ${e.message}`);
+      showError(`无法生成新部署: ${e.message}`);
       // eslint-disable-next-line
       console.warn(e);
     }
@@ -139,7 +139,7 @@ export default function Build({ user, userIsAdminOrHasWritePerm }) {
       await mutate(res, false);
       history.push(`/${namespace}/${name}/${res.number}`);
     } catch (e) {
-      showError(`Unable to cancel build: ${e.message}`);
+      showError(`无法撤销build: ${e.message}`);
       // eslint-disable-next-line
       console.warn(e.message);
     }
@@ -150,7 +150,7 @@ export default function Build({ user, userIsAdminOrHasWritePerm }) {
       const res = await axiosWrapper(`/api/repos/${namespace}/${name}/builds/${build}`, { method: 'POST' });
       history.push(`/${namespace}/${name}/${res.number}/1/1`);
     } catch (e) {
-      showError(`Unable to restart build: ${e.message}`);
+      showError(`无法重启build: ${e.message}`);
       // eslint-disable-next-line
       console.warn(e.message);
     }
@@ -161,7 +161,7 @@ export default function Build({ user, userIsAdminOrHasWritePerm }) {
       const res = await axiosWrapper(`/api/repos/${namespace}/${name}/builds/${build}?debug=true`, { method: 'POST' });
       history.push(`/${namespace}/${name}/${res.number}`);
     } catch (e) {
-      showError(`Unable to restart in debug mode: ${e.message}`);
+      showError(`无法重启 debug 模式: ${e.message}`);
       // eslint-disable-next-line
       console.warn(e.message);
     }
@@ -174,7 +174,7 @@ export default function Build({ user, userIsAdminOrHasWritePerm }) {
       });
       await mutate();
     } catch (e) {
-      showError(`Unable to approve build: ${e.message}`);
+      showError(`无法 approve build: ${e.message}`);
       // eslint-disable-next-line
       console.warn(e.message);
     }
@@ -187,7 +187,7 @@ export default function Build({ user, userIsAdminOrHasWritePerm }) {
       });
       await mutate();
     } catch (e) {
-      showError(`Unable to decline build: ${e.message}`);
+      showError(`无法 decline build: ${e.message}`);
       // eslint-disable-next-line
       console.warn(e.message);
     }
@@ -275,7 +275,7 @@ export default function Build({ user, userIsAdminOrHasWritePerm }) {
       />
       {content}
       <Modal
-        title="Create deployment"
+        title="生成部署"
         isShowing={isModalShowing}
         hide={toggleModal}
       >

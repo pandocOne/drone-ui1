@@ -174,7 +174,7 @@ const LogsLoadingLine = ({ shouldShow }) => {
   if (shouldShow) {
     return (
       <div className={cx('line-number')}>
-        Loading...
+        加载中...
       </div>
     );
   }

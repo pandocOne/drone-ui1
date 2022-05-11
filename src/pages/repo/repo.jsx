@@ -37,18 +37,18 @@ const getTabProps = ({
     {
       to: `/${namespace}/${name}/branches`,
       exact: true,
-      label: 'Branches',
+      label: '分支',
       tag: isRepoNavDisabled ? 'span' : NavLink,
     },
     {
       to: `/${namespace}/${name}/deployments`,
       exact: true,
-      label: 'Deployments',
+      label: '部署',
       tag: isRepoNavDisabled ? 'span' : NavLink,
     },
     {
       to: `/${namespace}/${name}/settings`,
-      label: 'Settings',
+      label: '设置',
       tag: NavLink,
     },
   ];
@@ -110,10 +110,10 @@ const Repo = ({ user }) => {
       const newBuild = await axiosWrapper(endpoint, {
         method: 'POST',
       });
-      showSuccess('New build has started successfully');
+      showSuccess('新build已成功开始');
       updateBuilds(window.location.pathname, repo, newBuild);
     } catch (e) {
-      showError(`Unable to start a new build: ${e.message}`);
+      showError(`无法启动一个新build: ${e.message}`);
       // eslint-disable-next-line no-console
       console.warn(e.message);
     }
@@ -139,7 +139,7 @@ const Repo = ({ user }) => {
           <header className={cx('header')}>
             <div className={cx('inner')}>
               <Breadcrumb className={cx('breadcrumb')}>
-                <BreadcrumbItem href="/" text="Repositories" />
+                <BreadcrumbItem href="/" text="库" />
                 <BreadcrumbSpacer />
               </Breadcrumb>
               <h1>{name}</h1>
@@ -151,7 +151,7 @@ const Repo = ({ user }) => {
                 icon={<DemoIcon />}
                 onClick={handleNewBuildClick}
               >
-                New Build
+                新建Build
               </Button>
             )}
           </header>
@@ -196,7 +196,7 @@ const Repo = ({ user }) => {
             />
           </Switch>
           <Modal
-            title="Create a New Build"
+            title="生成新Build"
             isShowing={isModalShowing}
             hide={toggleModal}
           >

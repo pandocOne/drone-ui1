@@ -49,9 +49,9 @@ export default function Builds({ repo }) {
   } else if (data.length) {
     content = (
       <section className={cx('wrapper')}>
-        <h2 className={cx('section-title')}>Summary</h2>
+        <h2 className={cx('section-title')}>摘要</h2>
         <Summary data={data} totalBuildsCounter={repo?.counter} className={cx('summary')} />
-        <h2 className={cx('section-title')}>Executions</h2>
+        <h2 className={cx('section-title')}>执行</h2>
         <BuildList data={data} url={url} />
         {(!isLoading && !isEndReached && data.length) ? (
           <div>
@@ -63,8 +63,8 @@ export default function Builds({ repo }) {
   } else {
     content = (
       <ZeroState
-        title="Your Build List is Empty."
-        message="Press the New Build button to execute your first build pipeline."
+        title="你的 Build 列表为空."
+        message="按 New Build 按钮执行你的首次 build pipeline."
       />
     );
   }

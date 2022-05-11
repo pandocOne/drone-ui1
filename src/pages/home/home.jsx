@@ -24,8 +24,8 @@ const cx = classNames.bind(styles);
 // on show more click
 const REPOS_CHUNK_SIZE = 50;
 
-const RECENT_ACTIVITY = 'Sort by Recent activity';
-const NAME = 'Sort by Name';
+const RECENT_ACTIVITY = '按最近活跃排序';
+const NAME = '按名称排序';
 const sortEnums = [RECENT_ACTIVITY, NAME];
 
 export default function Home() {
@@ -72,9 +72,9 @@ export default function Home() {
   );
 
   const orgOptions = useMemo(() => {
-    if (!orgs) return [{ value: '', key: 'All Organizations' }];
+    if (!orgs) return [{ value: '', key: '所有组织' }];
     const returnOrgs = orgs?.map((org) => ({ value: org, key: org }));
-    return [{ value: '', key: 'All Organizations' }, ...returnOrgs];
+    return [{ value: '', key: '所有组织' }, ...returnOrgs];
   }, [orgs]);
 
   const sortOptions = sortEnums.map((option) => ({ value: option, key: option }));
@@ -82,8 +82,8 @@ export default function Home() {
   useEffect(() => {
     if (syncError || viewerError) {
       setContext({ ...context, isAccSyncing: false });
-      showError('Sync error has occured, please, try again');
-      console.error('Sync error:', syncError?.message || viewerError?.message); // eslint-disable-line no-console
+      showError('发生同步错误，请重试');
+      console.error('同步错误:', syncError?.message || viewerError?.message); // eslint-disable-line no-console
     }
   }, [syncError, viewerError, showError, context, setContext]);
 
@@ -111,19 +111,19 @@ export default function Home() {
     content = (
       <>
         <div className={cx('subheader')}>
-          <h2 className={cx('section-title')}>Repositories</h2>
+          <h2 className={cx('section-title')}>库</h2>
           <div className={cx('actions')}>
             <Switch
               id="active-switch"
               checked={isActiveOnly}
               onChange={(val) => setIsActiveOnly(val)}
             >
-              Active Only
+              只显示活跃的库
             </Switch>
             <Select value={sortBy} optionsList={sortOptions} onChange={(e) => setSortBy(e.target.value)} />
             <Select value={filterOrg} optionsList={orgOptions} onChange={(e) => setFilterOrg(e.target.value)} />
             <Input
-              placeholder="Filter …"
+              placeholder="过滤器 …"
               icon="search"
               className={cx('search')}
               width={300}
@@ -138,7 +138,7 @@ export default function Home() {
           className={cx('btn', 'btn-show-more')}
           onClick={handleLoadMoreClick}
         >
-          Show more &#8595;
+          显示更多 &#8595;
         </Button>
         )}
       </>
@@ -146,8 +146,8 @@ export default function Home() {
   } else {
     content = (
       <ZeroState
-        title="Your Repository List is Empty."
-        message="Drone automatically syncs with your version control system to display your repositories."
+        title="库列表为空."
+        message="Drone自动同步你的版本控制系统以显示你的库."
       />
     );
   }
@@ -155,7 +155,7 @@ export default function Home() {
   return (
     <>
       <header className={cx('header')}>
-        <h1>Dashboard</h1>
+        <h1>仪表盘</h1>
         <button
           type="button"
           className={cx('btn', 'btn-sync')}
@@ -165,13 +165,13 @@ export default function Home() {
           {(isSyncing || hasSyncReqFiredOff) && (
             <span className={cx('btn-sync-spinner')} />
           )}
-          {(isSyncing || hasSyncReqFiredOff) ? 'Syncing' : 'Sync'}
+          {(isSyncing || hasSyncReqFiredOff) ? '同步中' : '同步'}
         </button>
       </header>
       <section className={cx('wrapper')}>
         {!!recent.length && (
         <>
-          <h2 className={cx('section-title', 'section-title-recent')}>Recent Activity</h2>
+          <h2 className={cx('section-title', 'section-title-recent')}>最近活跃</h2>
           <ReposRecent repos={recent} />
         </>
         )}
