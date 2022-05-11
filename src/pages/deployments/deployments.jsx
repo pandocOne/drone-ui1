@@ -76,10 +76,10 @@ function DeploymentListView(props) {
     <>
       <div className={cx('deployment-list-header')}>
         <div />
-        <div>Environment</div>
-        <div>Commit</div>
-        <div>Committer</div>
-        <div>Message</div>
+        <div>环境</div>
+        <div>提交</div>
+        <div>提交人</div>
+        <div>提交注释</div>
       </div>
       <div className={cx('deployment-list')}>
         {props.builds.map((build) => (
