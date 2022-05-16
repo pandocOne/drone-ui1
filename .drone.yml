@@ -1,0 +1,19 @@
+---
+kind: pipeline
+type: docker
+name: dockerrunner
+
+steps:
+- name: pandoc
+  image: pandocone:docx
+  pull: never
+  volumes:
+  - name: tmp
+    path: /tmp
+  commands:
+  - pwd
+  - ls -al
+
+volumes:
+- name: tmp
+  temp: {}
