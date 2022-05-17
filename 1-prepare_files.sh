@@ -8,3 +8,4 @@ mv .env.example .env
 
 npm run build
 chown -R 1000:1000 *
+
