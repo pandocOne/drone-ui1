@@ -64,7 +64,7 @@ export default function Welcome() {
             欢迎使用 Drone.
           </h1>
           {error}
-          <p>你将被重定向到Gitea登录界面登录</p>
+          <p>你将被重定向到Git系统登录界面登录</p>
         </div>
         <a href="/login" target="_self" className={cx('btn')}>
           <span>继续</span>
