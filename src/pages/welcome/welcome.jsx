@@ -58,7 +58,7 @@ export default function Welcome() {
       <div className={cx('login')}>
         <div className={cx('header')}>
           <h1 className={cx('title')}>
-            欢迎使用自动文档系统.
+            欢迎使用自动文档系统
           </h1>
           {error}
           <p>你将被重定向到Git系统登录界面登录</p>
