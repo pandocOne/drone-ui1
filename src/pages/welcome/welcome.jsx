@@ -56,12 +56,9 @@ export default function Welcome() {
   return (
     <section className={cx('wrapper')}>
       <div className={cx('login')}>
-        <div className={cx('kicker')}>
-          <DroneLogo />
-        </div>
         <div className={cx('header')}>
           <h1 className={cx('title')}>
-            欢迎使用 Drone.
+            欢迎使用自动文档系统.
           </h1>
           {error}
           <p>你将被重定向到Git系统登录界面登录</p>
